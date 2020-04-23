@@ -1,0 +1,50 @@
+/* Margin */
+.mbt-small {
+  margin-bottom: 1rem;
+}
+.mbt-medium {
+  margin-bottom: 3rem;
+}
+.mbt-large {
+  margin-bottom: 5rem;
+}
+.mbt-largest {
+  margin-bottom: 8rem;
+}
+
+.mt-small {
+  margin-top: 1rem;
+}
+.mt-medium {
+  margin-top: 3rem;
+}
+.mt-large {
+  margin-top: 5rem;
+}
+.mt-largest {
+  margin-top: 8rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Components */
+
+.btn {
+  border: 0;
+  border-radius: 5px;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.input {
+  border-radius: 5px;
+  border: 0;
+}
+
+.input:focus {
+  outline: none;
+}
