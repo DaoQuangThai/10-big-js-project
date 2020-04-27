@@ -57,6 +57,7 @@ elements.searchResPage.addEventListener('click', e => {
 });
 
 /* ============== RECIPE CONTROLLER ================= */
+
 const controlRecipe = async () => {
   // Get ID from url
   const id = window.location.hash.replace('#', '');
@@ -76,12 +77,14 @@ const controlRecipe = async () => {
       await state.recipe.getRecipe();
       state.recipe.parseIngredients();
 
+      // console.log(state.recipe.ingredients);
+
       // Calculate servings and time
       state.recipe.calcTime();
       state.recipe.calcServings();
 
       // Render recipe
-      // console.log(state.recipe);
+      console.log(state.recipe.servings);
 
       recipeView.renderRecipe(state.recipe);
     } catch (err) {
@@ -92,3 +95,17 @@ const controlRecipe = async () => {
 
 window.addEventListener('hashchange', controlRecipe);
 window.addEventListener('load', controlRecipe);
+
+// Handling recipe serving button click
+elements.recipe.addEventListener('click', e => {
+  if (e.target.matches('btn-decrease, .btn-decrease *')) {
+    if (state.recipe.servings > 1) {
+      state.recipe.updateServings('des');
+      recipeView.updateServingsIngredients(state.recipe);
+    }
+  } else if (e.target.matches('btn-increase, .btn-increase *')) {
+    state.recipe.updateServings('inc');
+    recipeView.updateServingsIngredients(state.recipe);
+  }
+  console.log(state.recipe);
+});

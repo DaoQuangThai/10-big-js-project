@@ -24,6 +24,17 @@ const createIngredient = ingredient => {
 `;
 };
 
+const updateServingsIngredients = recipe => {
+  // Update servings
+  document.querySelector('.recipe__info-data--people').innerText =
+    recipe.servings;
+  // Update ingredients
+  const countElements = document.querySelectorAll('.recipe__count');
+  countElements.forEach((el, idx) => {
+    el.innerText = formatCount(recipe.ingredients[idx].count);
+  });
+};
+
 const renderRecipe = recipe => {
   const markup = `
            <figure class="recipe__fig">
@@ -55,12 +66,12 @@ const renderRecipe = recipe => {
                     <span class="recipe__info-text"> servings</span>
 
                     <div class="recipe__info-buttons">
-                        <button class="btn-tiny">
+                        <button class="btn-tiny btn-decrease">
                             <svg>
                                 <use href="img/icons.svg#icon-circle-with-minus"></use>
                             </svg>
                         </button>
-                        <button class="btn-tiny">
+                        <button class="btn-tiny btn-increase">
                             <svg>
                                 <use href="img/icons.svg#icon-circle-with-plus"></use>
                             </svg>
@@ -111,4 +122,4 @@ const renderRecipe = recipe => {
   elements.recipe.innerHTML = markup;
 };
 
-export { renderRecipe };
+export { renderRecipe, updateServingsIngredients };
